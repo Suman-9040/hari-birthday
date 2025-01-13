@@ -3,52 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday [HARI]</title>
+    <title>Happy Birthday!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffccff, #ff99cc);
+            color: #333;
             text-align: center;
         }
-        .header {
-            background-color: #ff6347;
+        header {
+            background-color: #ff66b3;
             color: white;
-            padding: 1em;
+            padding: 20px 10px;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px #99004d;
         }
-        .gallery img {
-            width: 200px;
-            height: auto;
-            margin: 10px;
+        .slideshow {
+            margin: 20px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #ff66b3;
+            border-radius: 15px;
         }
-        .wishes, .memory-lane, .contact {
-            margin: 20px;
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+            animation: fade 5s infinite;
+        }
+        @keyframes fade {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .message {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .countdown {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ff66b3;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #ff66b3;
+            color: white;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Happy Birthday, [HARI]!</h1>
-        <p>Welcome to your special birthday site</p>
+    <header>
+        🎉 Happy Birthday, HARI ! 🎉
+    </header>
+
+    <div class="slideshow">
+        <div class="slides">
+            <img src="path_to_photo1.jpg" alt="Memory 1">
+            <img src="path_to_photo1.jpg" alt="Memory 2">
+            <img src="path_to_photo1.jpg" alt="Memory 3">
+        </div>
     </div>
-    <div class="gallery">
-        <h2>Photo Gallery</h2>
-        <!-- Add your friend's photos here -->
-        <img src="path_to_photo1.jpg" alt="Photo 1">
-        <img src="path_to_photo2.jpg" alt="Photo 2">
-        <img src="path_to_photo3.jpg" alt="Photo 3">
+
+    <div class="message">
+        Dear [Friend's Name],
+        <br><br>
+        Wishing you a day filled with love, laughter, and all the things that bring you joy. You are an amazing person, and I feel so lucky to have you as a friend. Here's to making more unforgettable memories together. Have the best birthday ever! 🎂🎈
     </div>
-    <div class="wishes">
-        <h2>Birthday Wishes</h2>
-        <!-- Add birthday wishes here -->
+
+    <div class="countdown">
+        You've been celebrating for <span id="time-elapsed">0</span> seconds!
     </div>
-    <div class="memory-lane">
-        <h2>Memory Lane</h2>
-        <!-- Add timeline of memories here -->
-    </div>
-    <div class="contact">
-        <h2>Contact Info</h2>
-        <p>Email: [Your Email]</p>
-        <p>Phone: [Your Phone Number]</p>
-    </div>
+
+    <footer>
+        Made ❤️ by Your Best Friend SUMAN
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        const slides = document.querySelectorAll('.slides img');
+        let currentSlide = 0;
+
+        function showSlide() {
+            slides.forEach((slide, index) => {
+                slide.style.display = index === currentSlide ? 'block' : 'none';
+            });
+            currentSlide = (currentSlide + 1) % slides.length;
+        }
+        setInterval(showSlide, 3000);
+
+        // Countdown functionality
+        const startTime = new Date();
+        function updateTime() {
+            const now = new Date();
+            const elapsed = Math.floor((now - startTime) / 1000);
+            document.getElementById('time-elapsed').innerText = elapsed;
+        }
+        setInterval(updateTime, 1000);
+
+        // Initialize slideshow
+        showSlide();
+    </script>
 </body>
 </html>
